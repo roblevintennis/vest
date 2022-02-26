@@ -2,14 +2,14 @@ import isFunction from 'isFunction';
 import throwError from 'throwError';
 
 import { parse } from 'parser';
-import type { IVestResult } from 'produce';
-import type { TDraftResult } from 'produceDraft';
+import type { ReadOnlySuiteResult } from 'produceBase';
+import type { SuiteResult } from 'produceSuiteResult';
 
 /**
  * Creates a function that returns class names that match the validation result
  */
 export default function classnames(
-  res: IVestResult | TDraftResult,
+  res: SuiteResult | ReadOnlySuiteResult,
   classes: TSupportedClasses = {}
 ): (fieldName: string) => string {
   if (!res || !isFunction(res.hasErrors)) {

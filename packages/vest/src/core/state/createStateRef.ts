@@ -2,7 +2,7 @@ import type { NestedArray } from 'nestedArray';
 import type { TState } from 'vast';
 
 import VestTest from 'VestTest';
-import type { TDraftResult } from 'produceDraft';
+import type { ReadOnlySuiteResult } from 'produceBase';
 
 export default function createStateRef(
   state: TState,
@@ -15,8 +15,8 @@ export default function createStateRef(
     suiteId: state.registerStateKey<string>(suiteId),
     suiteName: state.registerStateKey<string | void>(suiteName),
     testCallbacks: state.registerStateKey<{
-      fieldCallbacks: Record<string, Array<(res: TDraftResult) => void>>;
-      doneCallbacks: Array<(res: TDraftResult) => void>;
+      fieldCallbacks: Record<string, Array<(res: ReadOnlySuiteResult) => void>>;
+      doneCallbacks: Array<(res: ReadOnlySuiteResult) => void>;
     }>(() => ({
       fieldCallbacks: {},
       doneCallbacks: [],

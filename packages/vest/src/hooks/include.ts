@@ -4,11 +4,11 @@ import { isStringValue } from 'isStringValue';
 import optionalFunctionValue from 'optionalFunctionValue';
 
 import ctx from 'ctx';
-import { produceDraft, TDraftResult } from 'produceDraft';
+import { produceBase, ReadOnlySuiteResult } from 'produceBase';
 
 export default function include(fieldName: string): {
   when: (
-    condition: string | boolean | ((draft: TDraftResult) => boolean)
+    condition: string | boolean | ((draft: ReadOnlySuiteResult) => boolean)
   ) => void;
 } {
   const context = ctx.useX();
@@ -23,7 +23,7 @@ export default function include(fieldName: string): {
   return { when };
 
   function when(
-    condition: string | ((draft: TDraftResult) => boolean) | boolean
+    condition: string | ((draft: ReadOnlySuiteResult) => boolean) | boolean
   ): void {
     const context = ctx.useX();
     const { inclusion, exclusion } = context;
@@ -39,7 +39,7 @@ export default function include(fieldName: string): {
 
       return optionalFunctionValue(
         condition,
-        optionalFunctionValue(produceDraft)
+        optionalFunctionValue(produceBase)
       );
     };
   }

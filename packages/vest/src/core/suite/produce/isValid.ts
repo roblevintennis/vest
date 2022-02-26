@@ -1,7 +1,7 @@
 import { isNotEmpty, isEmpty } from 'isEmpty';
 
 import { nonMatchingFieldName } from 'matchingFieldName';
-import type { TDraftResult } from 'produceDraft';
+import type { ReadOnlySuiteResult } from 'produceBase';
 import {
   useTestsFlat,
   useAllIncomplete,
@@ -10,7 +10,10 @@ import {
 } from 'stateHooks';
 
 // eslint-disable-next-line max-statements, complexity
-export function isValid(result: TDraftResult, fieldName?: string): boolean {
+export function isValid(
+  result: ReadOnlySuiteResult,
+  fieldName?: string
+): boolean {
   if (fieldIsOmitted(fieldName)) {
     return true;
   }
@@ -59,7 +62,10 @@ function hasNonOptionalIncomplete(fieldName?: string) {
   );
 }
 
-function fieldDoesNotExist(result: TDraftResult, fieldName?: string): boolean {
+function fieldDoesNotExist(
+  result: ReadOnlySuiteResult,
+  fieldName?: string
+): boolean {
   return !!fieldName && isEmpty(result.tests[fieldName]);
 }
 

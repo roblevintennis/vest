@@ -1,12 +1,12 @@
-import { produceFullResult } from 'produce';
-import { produceDraft } from 'produceDraft';
-
 import itWithContext from '../../../../../testUtils/itWithContext';
 import { dummyTest } from '../../../../../testUtils/testDummy';
 import { setTestObjects } from '../../../../../testUtils/testObjects';
 
+import { produceFullResult } from 'produceSuiteResult';
+import { produceBase } from 'produceBase';
+
 const methods = {
-  produceDraft,
+  produceBase,
   produceFullResult,
 };
 
@@ -103,10 +103,10 @@ describe.each(Object.keys(methods))('produce method: %s', methodName => {
   });
 });
 
-describe('produceDraft', () => {
+describe('produceBase', () => {
   describe('exposed methods', () => {
     itWithContext('Should have all exposed methods', () => {
-      expect(produceDraft()).toMatchInlineSnapshot(`
+      expect(produceBase()).toMatchInlineSnapshot(`
         Object {
           "errorCount": 0,
           "getErrors": [Function],

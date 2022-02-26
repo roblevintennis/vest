@@ -1,12 +1,12 @@
 import isFunction from 'isFunction';
 import throwError from 'throwError';
 
-import { IVestResult } from 'produce';
-import { TDraftResult } from 'produceDraft';
+import { ReadOnlySuiteResult } from 'produceBase';
+import { SuiteResult } from 'produceSuiteResult';
 
 const promisify =
-  (validatorFn: (...args: any[]) => IVestResult) =>
-  (...args: any[]): Promise<TDraftResult> => {
+  (validatorFn: (...args: any[]) => SuiteResult) =>
+  (...args: any[]): Promise<ReadOnlySuiteResult> => {
     if (!isFunction(validatorFn)) {
       throwError('promisify: Expected validatorFn to be a function.');
     }

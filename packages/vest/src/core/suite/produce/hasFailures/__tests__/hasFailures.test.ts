@@ -7,11 +7,11 @@ import {
   emptyTestObjects,
 } from '../../../../../../testUtils/testObjects';
 
-import { produceFullResult } from 'produce';
-import { produceDraft } from 'produceDraft';
+import { produceFullResult } from 'produceSuiteResult';
+import { produceBase } from 'produceBase';
 
 const methods = {
-  produceDraft,
+  produceBase,
   produceFullResult,
 };
 

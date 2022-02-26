@@ -1,10 +1,10 @@
 import { greaterThan } from 'greaterThan';
 import hasOwnProperty from 'hasOwnProperty';
 
-import type { IVestResult } from 'produce';
-import type { TDraftResult } from 'produceDraft';
+import type { ReadOnlySuiteResult } from 'produceBase';
+import type { SuiteResult } from 'produceSuiteResult';
 
-export function parse(res: IVestResult | TDraftResult): {
+export function parse(res: SuiteResult | ReadOnlySuiteResult): {
   valid: (fieldName?: string) => boolean;
   tested: (fieldName?: string) => boolean;
   invalid: (fieldName?: string) => boolean;
